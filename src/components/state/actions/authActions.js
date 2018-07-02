@@ -1,13 +1,13 @@
 // IMPORT SERVICES
-import { fetchSessionIdService, fetchRequestTokenService } from '../../services/AuthService';
+import { fetchGuestSessionIdService, fetchRequestTokenService } from '../../services/AuthService';
 import * as actions from './actionTypes';
 
 
 // ACTIONS GENERATORS
 
-const fetchSessionId = () => ({
+const fetchGuestSessionId = () => ({
     type: actions.FETCH_SESSION_ID,
-    payload: fetchSessionIdService()
+    payload: fetchGuestSessionIdService()
 });
 
 const fetchRequestToken = () => ({
@@ -19,4 +19,4 @@ const fetchRequestToken = () => ({
 
 // EXPORT ACTIONS
 
-export { fetchSessionId, fetchRequestToken };
+export { fetchGuestSessionId, fetchRequestToken };

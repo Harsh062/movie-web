@@ -7,8 +7,9 @@ import * as actions from '../actions/actionTypes';
 
 const initialState = {
     requestToken: null,
-    inProgress: true,
-    error: null
+    fetchingRequestToken: false,
+    requestTokenFetched: false,
+    fetchRequestTokenError: null
 };
 
 
@@ -22,24 +23,27 @@ export const RequestTokenReducer = (state = initialState, action) => {
             return {
                 ...state,
                 requestToken: null,
-                inProgress: true,
-                error: null
+                fetchingRequestToken: true,
+                requestTokenFetched: false,
+                fetchRequestTokenError: null
             };
         case actions.FETCH_REQUEST_TOKEN_FULFILLED:
             console.log('FETCH_REQUEST_TOKEN_FULFILLED');
             return {
                 ...state,
                 requestToken: action.payload,
-                inProgress: false,
-                error: null
+                fetchingRequestToken: false,
+                requestTokenFetched: true,
+                fetchRequestTokenError: null
             };
         case actions.FETCH_REQUEST_TOKEN_REJECTED:
             console.log('FETCH_REQUEST_TOKEN_REJECTED');
             return {
                 ...state,
                 requestToken: null,
-                inProgress: false,
-                error: action.payload
+                fetchingRequestToken: false,
+                requestTokenFetched: false,
+                fetchRequestTokenError: action.payload
             };
        
         default:
