@@ -8,6 +8,7 @@ import * as actions from '../actions/actionTypes';
 const initialState = {
     sessionId: 'Default Session ID',
     fetchingGuestSessionId: true,
+    guestSessionIdFetched: false,
     fetchGuestSessionIdError: null
 };
 
@@ -16,28 +17,31 @@ const initialState = {
 
 export const GuestSessionReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actions.FETCH_SESSION_ID_PENDING:
-            console.log('FETCH_SESSION_ID_PENDING');
+        case actions.FETCH_GUEST_SESSION_ID_PENDING:
+            console.log('FETCH_GUEST_SESSION_ID_PENDING');
             return {
                 ...state,
                 sessionId: action.payload,
                 fetchingGuestSessionId: true,
+                guestSessionIdFetched: false,
                 fetchGuestSessionIdError: null
             };
-        case actions.FETCH_SESSION_ID_FULFILLED:
-            console.log('FETCH_SESSION_ID_FULFILLED');
+        case actions.FETCH_GUEST_SESSION_ID_FULFILLED:
+            console.log('FETCH_GUEST_SESSION_ID_FULFILLED');
             return {
                 ...state,
                 sessionId: action.payload,
                 fetchingGuestSessionId: false,
+                guestSessionIdFetched: true,
                 fetchGuestSessionIdError: null
             };
-        case actions.FETCH_SESSION_ID_REJECTED:
-            console.log('FETCH_SESSION_ID_REJECTED');
+        case actions.FETCH_GUEST_SESSION_ID_REJECTED:
+            console.log('FETCH_GUEST_SESSION_ID_REJECTED');
             return {
                 ...state,
                 sessionId: action.payload,
                 fetchingGuestSessionId: false,
+                guestSessionIdFetched: false,
                 fetchGuestSessionIdError: action.payload
             };
         default:
