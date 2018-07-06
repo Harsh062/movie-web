@@ -20,6 +20,11 @@ const fetchSessionId = (req_token) => ({
     payload: fetchSessionIdService(req_token)
 });
 
+const fetchUserInfo = (session_id) => ({
+    type: actions.FETCH_USER_INFO,
+    payload: fetchSessionIdService(session_id)
+});
+
 // EXPORT ACTIONS
 
-export { fetchGuestSessionId, fetchRequestToken, fetchSessionId };
+export { fetchGuestSessionId, fetchRequestToken, fetchSessionId, fetchUserInfo };

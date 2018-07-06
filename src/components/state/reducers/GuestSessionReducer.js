@@ -6,7 +6,7 @@ import * as actions from '../actions/actionTypes';
 // INITIALIZE STATE
 
 const initialState = {
-    sessionId: 'Default Session ID',
+    guestSessionId: 'Default Session ID',
     fetchingGuestSessionId: true,
     guestSessionIdFetched: false,
     fetchGuestSessionIdError: null
@@ -21,7 +21,7 @@ export const GuestSessionReducer = (state = initialState, action) => {
             console.log('FETCH_GUEST_SESSION_ID_PENDING');
             return {
                 ...state,
-                sessionId: action.payload,
+                guestSessionId: action.payload,
                 fetchingGuestSessionId: true,
                 guestSessionIdFetched: false,
                 fetchGuestSessionIdError: null
@@ -30,7 +30,7 @@ export const GuestSessionReducer = (state = initialState, action) => {
             console.log('FETCH_GUEST_SESSION_ID_FULFILLED');
             return {
                 ...state,
-                sessionId: action.payload,
+                guestSessionId: action.payload,
                 fetchingGuestSessionId: false,
                 guestSessionIdFetched: true,
                 fetchGuestSessionIdError: null
@@ -39,7 +39,7 @@ export const GuestSessionReducer = (state = initialState, action) => {
             console.log('FETCH_GUEST_SESSION_ID_REJECTED');
             return {
                 ...state,
-                sessionId: action.payload,
+                guestSessionId: action.payload,
                 fetchingGuestSessionId: false,
                 guestSessionIdFetched: false,
                 fetchGuestSessionIdError: action.payload

@@ -47,3 +47,18 @@ export const fetchSessionIdService = (req_token) => {
     
 
 }
+
+export const fetchUserInfoService = (session_id) => {
+    return new Promise((resolve, reject) => {
+        axios.get(`${API_BASE_URL}/account?api_key=${API_KEY}&session_id=${session_id}`)
+        .then(response => {
+            console.log(response.data);
+            return resolve(response.data);
+        })
+        .catch(error => {
+            return reject(error);
+        })
+    });
+    
+
+}

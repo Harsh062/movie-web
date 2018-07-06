@@ -13,6 +13,7 @@ import  Dashboard  from './dashboard/Dashboard';
 import Home from './home/Home';
 import { LoadingIndicator } from './shared/LoadingIndicator';
 import { fetchGuestSessionId, fetchRequestToken } from './state/actions/authActions';
+import Auth from './Auth';
 
 // COMPONENT
 
@@ -28,7 +29,7 @@ class App extends Component {
 
     navigateToTmdbLoginPage = () => {
         console.log('this.props: ', this.props);
-        window.location.href = `https://www.themoviedb.org/authenticate/${this.props.requestToken}?redirect_to=http://localhost:3000/home`;
+        window.location.href = `https://www.themoviedb.org/authenticate/${this.props.requestToken}?redirect_to=http://localhost:3000/auth`;
     }
 
     render() {
@@ -40,8 +41,9 @@ class App extends Component {
                         <Fragment>
                             <Header onLoginClick={this.loginClickHandler}/>
                             <Switch>
-                                <Route path='/home' component={Home} />
                                 <Route path='/' component={Dashboard} exact={true} />
+                                <Route path='/home' component={Home} />
+                                <Route path='/auth' component={Auth} />
                             </Switch>
                             <Footer />
                         </Fragment>
@@ -52,9 +54,6 @@ class App extends Component {
                     {
                         requestTokenFetched && this.navigateToTmdbLoginPage()
                     }
-                    {
-
-                    }
                 </Fragment>
         );
     }
@@ -62,10 +61,10 @@ class App extends Component {
 } 
 
 const mapStateToProps = state => {
-    const { sessionId, fetchingGuestSessionId, fetchGuestSessionIdError } = state.guestSessionReducer;
+    const { guestSessionId, fetchingGuestSessionId, fetchGuestSessionIdError } = state.guestSessionReducer;
     const { requestToken, fetchingRequestToken, fetchRequestTokenError, requestTokenFetched } = state.requestTokenReducer;
     return {
-        sessionId,
+        guestSessionId,
         requestToken,
         fetchingRequestToken,
         requestTokenFetched,

@@ -21,7 +21,7 @@ export const SessionReducer = (state = initialState, action) => {
             console.log('FETCH_SESSION_ID_PENDING');
             return {
                 ...state,
-                sessionId: action.payload,
+                sessionId: null,
                 fetchingSessionId: true,
                 sessionIdFetched: false,
                 fetchSessionIdError: null
@@ -30,7 +30,7 @@ export const SessionReducer = (state = initialState, action) => {
             console.log('FETCH_SESSION_ID_FULFILLED');
             return {
                 ...state,
-                sessionId: action.payload,
+                sessionId: action.payload.session_id,
                 fetchingSessionId: false,
                 sessionIdFetched: true,
                 fetchSessionIdError: null
@@ -39,7 +39,7 @@ export const SessionReducer = (state = initialState, action) => {
             console.log('FETCH_SESSION_ID_REJECTED');
             return {
                 ...state,
-                sessionId: action.payload,
+                sessionId: null,
                 fetchingSessionId: false,
                 sessionIdFetched: false,
                 fetchSessionIdError: action.payload
