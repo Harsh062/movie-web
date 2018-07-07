@@ -16,7 +16,6 @@ const initialState = {
 // Request Token Reducer
 
 export const RequestTokenReducer = (state = initialState, action) => {
-    console.log('REQUEST_TOKEN: ', action);
     switch (action.type) {
         case actions.FETCH_REQUEST_TOKEN_PENDING:
             console.log('FETCH_REQUEST_TOKEN_PENDING');

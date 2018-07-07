@@ -35,7 +35,7 @@ export const fetchRequestTokenService = () => {
 
 export const fetchSessionIdService = (req_token) => {
     return new Promise((resolve, reject) => {
-        axios.get(`${API_BASE_URL}/authentication/session/new?api_key=${API_KEY}&request_token=${req_token}`)
+        axios.get(`${API_BASE_URL}/configuration?api_key=${API_KEY}`)
         .then(response => {
             console.log(response.data);
             return resolve(response.data);
@@ -52,13 +52,50 @@ export const fetchUserInfoService = (session_id) => {
     return new Promise((resolve, reject) => {
         axios.get(`${API_BASE_URL}/account?api_key=${API_KEY}&session_id=${session_id}`)
         .then(response => {
-            console.log(response.data);
+            console.log(`user info response [service]: ${response.data}`);
             return resolve(response.data);
         })
         .catch(error => {
             return reject(error);
         })
     });
-    
+}
 
+export const fetchAPIConfigurationService = () => {
+    return new Promise((resolve, reject) => {
+        axios.get(`${API_BASE_URL}/configuration?api_key=${API_KEY}`)
+        .then(response => {
+            console.log(`api conf [service]: ${response.data}`);
+            return resolve(response.data);
+        })
+        .catch(error => {
+            return reject(error);
+        })
+    });
+}
+
+export const fetchPopularMoviesService = () => {
+    return new Promise((resolve, reject) => {
+        axios.get(`${API_BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
+        .then(response => {
+            console.log(`Popular Movies [service]: ${response.data}`);
+            return resolve(response.data);
+        })
+        .catch(error => {
+            return reject(error);
+        })
+    });
+}
+
+export const fetchPopularTvShowsService = () => {
+    return new Promise((resolve, reject) => {
+        axios.get(`${API_BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=1`)
+        .then(response => {
+            console.log(`Popular TV Shows [service]: ${response.data}`);
+            return resolve(response.data);
+        })
+        .catch(error => {
+            return reject(error);
+        })
+    });
 }

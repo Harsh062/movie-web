@@ -2,14 +2,14 @@ import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'; 
 import queryString from 'query-string';
-import { fetchSessionId, fetchUserInfo } from './state/actions/authActions';
-import { LoadingIndicator } from './shared/LoadingIndicator';
+import { fetchSessionId, fetchUserInfo } from '../state/actions/authActions';
+import { LoadingIndicator } from '../shared/LoadingIndicator';
 
 class Auth extends Component {
     componentDidMount() {
         console.log(`this.props.request_token: ${queryString.parse(this.props.location.search).request_token}`);
         const request_token = queryString.parse(this.props.location.search).request_token;
-        this.props.fetchSessionId(request_token);
+        //this.props.fetchSessionId(request_token);
     }
     getUserInfo = (sessionId) => {
         console.log(`sessionId: ${sessionId}`);
@@ -21,9 +21,6 @@ class Auth extends Component {
                 <p>Auth Component</p>
                 {
                     <LoadingIndicator busy={fetchingSessionId} />
-                }
-                {
-                    sessionIdFetched && this.props.fetchUserInfo(sessionId)
                 }
             </Fragment>
         )
