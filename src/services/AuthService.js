@@ -76,7 +76,7 @@ export const fetchAPIConfigurationService = () => {
 
 export const fetchPopularMoviesService = () => {
     return new Promise((resolve, reject) => {
-        axios.get(`${API_BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
+        axios.get(`${API_BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`)
         .then(response => {
             console.log(`Popular Movies [service]: ${response.data}`);
             return resolve(response.data);
