@@ -7,7 +7,8 @@ import {
         fetchAPIConfigurationService, 
         fetchPopularMoviesService,
         fetchPopularTvShowsService,
-        fetchMovieCreditsService
+        fetchMovieCreditsService,
+        fetchMovieDetailsService
     } from '../../services/AuthService';
 import * as actions from './actionTypes';
 
@@ -83,6 +84,22 @@ const fetchMovieCredits = (movie_id) => ({
     payload: fetchMovieCreditsService(movie_id)
 });
 
+const fetchMovieDetails = (movie_id) => ({
+    type: actions.FETCH_MOVIE_DETAILS,
+    payload: fetchMovieDetailsService(movie_id)
+});
+
+const fetchMovieDetailsAndCredits = (movie_id) => {
+    return dispatch => {
+        return dispatch({
+            type: actions.FETCH_MOVIES_CREDITS_AND_DETAILS,
+            payload: Promise.all([
+                dispatch(fetchMovieCredits(movie_id)),
+                dispatch(fetchMovieDetails(movie_id))
+            ])
+        })
+    }
+}
 
 // EXPORT ACTIONS
 
@@ -93,5 +110,5 @@ export {
          fetchUserInfo, 
          fetchAPIConfiguration, 
          fetchPopularMoviesAndTvShows,
-         fetchMovieCredits
+         fetchMovieDetailsAndCredits
         };

@@ -112,3 +112,16 @@ export const fetchMovieCreditsService = (movie_id) => {
         })
     });
 }
+
+export const fetchMovieDetailsService = (movie_id) => {
+    return new Promise((resolve, reject) => {
+        axios.get(`${API_BASE_URL}/movie/${movie_id}?api_key=${API_KEY}&language=en-US`)
+        .then(response => {
+            console.log(`Movie Details [service]: ${response.data}`);
+            return resolve(response.data);
+        })
+        .catch(error => {
+            return reject(error);
+        })
+    });
+}

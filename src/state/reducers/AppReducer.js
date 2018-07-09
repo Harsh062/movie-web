@@ -7,6 +7,7 @@ import { ApiConfReducer } from './ApiConfReducer';
 import { PopularMoviesReducer } from './PopularMoviesReducer';
 import { PopularTvShowsReducer } from './PopularTvShowsReducer';
 import { MovieCreditsReducer } from './MovieCreditsReducer';
+import { MovieDetailsReducer } from './MovieDetailsReducer';
 
 export const AppReducer = combineReducers({
     guestSessionReducer: GuestSessionReducer,
@@ -15,5 +16,6 @@ export const AppReducer = combineReducers({
     apiConfReducer: ApiConfReducer,
     popularMoviesReducer: PopularMoviesReducer,
     popularTvShowsReducer: PopularTvShowsReducer,
-    movieCreditsReducer: MovieCreditsReducer
+    movieCreditsReducer: MovieCreditsReducer,
+    movieDetailsReducer: MovieDetailsReducer
 });
