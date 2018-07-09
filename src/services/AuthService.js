@@ -99,3 +99,16 @@ export const fetchPopularTvShowsService = () => {
         })
     });
 }
+
+export const fetchMovieCreditsService = (movie_id) => {
+    return new Promise((resolve, reject) => {
+        axios.get(`${API_BASE_URL}/movie/${movie_id}/credits?api_key=${API_KEY}`)
+        .then(response => {
+            console.log(`Movie Credits [service]: ${response.data}`);
+            return resolve(response.data);
+        })
+        .catch(error => {
+            return reject(error);
+        })
+    });
+}

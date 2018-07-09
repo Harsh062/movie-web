@@ -12,6 +12,7 @@ import { Header } from './containers/Header';
 import  Dashboard  from './containers/Dashboard';
 import Home from './containers/Home';
 import Auth from './containers/Auth';
+import MovieDetails from './containers/MovieDetails';
 
 import { Footer } from './shared/Footer';
 import { LoadingIndicator } from './shared/LoadingIndicator';
@@ -26,12 +27,10 @@ class App extends Component {
     }
 
     loginClickHandler = () => {
-        console.log('Clicked on login');
         this.props.fetchRequestToken();
     }
 
     navigateToTmdbLoginPage = () => {
-        console.log('this.props: ', this.props);
         window.location.href = `https://www.themoviedb.org/authenticate/${this.props.requestToken}?redirect_to=http://localhost:3000/auth`;
     }
 
@@ -53,6 +52,7 @@ class App extends Component {
                                 <Route path='/' component={Home} exact={true} />
                                 <Route path='/home' component={Home} />
                                 <Route path='/auth' component={Auth} />
+                                <Route path='/movie/:id' component={MovieDetails} />
                             </Switch>
                             <Footer />
                         </Fragment>

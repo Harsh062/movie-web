@@ -6,7 +6,8 @@ import {
         fetchUserInfoService, 
         fetchAPIConfigurationService, 
         fetchPopularMoviesService,
-        fetchPopularTvShowsService
+        fetchPopularTvShowsService,
+        fetchMovieCreditsService
     } from '../../services/AuthService';
 import * as actions from './actionTypes';
 
@@ -77,6 +78,11 @@ const fetchSessionId = (req_token) => {
     };
 }
 
+const fetchMovieCredits = (movie_id) => ({
+    type: actions.FETCH_MOVIE_CREDITS,
+    payload: fetchMovieCreditsService(movie_id)
+});
+
 
 // EXPORT ACTIONS
 
@@ -86,5 +92,6 @@ export {
          fetchSessionId, 
          fetchUserInfo, 
          fetchAPIConfiguration, 
-         fetchPopularMoviesAndTvShows 
+         fetchPopularMoviesAndTvShows,
+         fetchMovieCredits
         };
