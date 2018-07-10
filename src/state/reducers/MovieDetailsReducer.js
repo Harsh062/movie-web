@@ -6,14 +6,14 @@ import * as actions from '../actions/actionTypes';
 // INITIALIZE STATE
 
 const initialState = {
-    movieDetails: 'Default Session ID',
+    movieDetails: null,
     fetchingMovieDetails: true,
     movieDetailsFetched: false,
     fetchMovieDetailsError: null
 };
 
 
-// Guest ID Reducer
+// Movie Details Reducer
 
 export const MovieDetailsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -21,7 +21,7 @@ export const MovieDetailsReducer = (state = initialState, action) => {
             console.log('FETCH_MOVIE_DETAILS_PENDING');
             return {
                 ...state,
-                movieDetails: action.payload,
+                movieDetails: null,
                 fetchingMovieDetails: true,
                 movieDetailsFetched: false,
                 fetchMovieDetailsError: null
@@ -32,16 +32,13 @@ export const MovieDetailsReducer = (state = initialState, action) => {
                 ...state,
                 movieDetails: action.payload,
                 fetchingMovieDetails: false,
-                movieDetailsFetched: true,
-                fetchMovieDetailsError: null
+                movieDetailsFetched: true
             };
         case actions.FETCH_MOVIE_DETAILS_REJECTED:
             console.log('FETCH_MOVIE_DETAILS_REJECTED');
             return {
                 ...state,
-                movieDetails: null,
                 fetchingMovieDetails: false,
-                movieDetailsFetched: false,
                 fetchMovieDetailsError: action.payload
             };
         default:

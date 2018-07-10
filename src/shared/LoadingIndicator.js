@@ -10,9 +10,7 @@ const LoadingIndicator = (props) => (
     <div>
         {
             props.busy &&
-            <div style={{ top: '40%', left: '50%', textAlign: 'center', color: '#26A69A', position: 'absolute', transform: 'translate(-50%, 0)' }}>
-                <i className="fa fa-spinner fa-spin fa-4x fa-fw"></i>
-            </div>
+            <h1>LOADING DATA...</h1>
         }
     </div>
 );

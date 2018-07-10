@@ -6,7 +6,7 @@ import * as actions from '../actions/actionTypes';
 // INITIALIZE STATE
 
 const initialState = {
-    movieCredits: 'Default Session ID',
+    movieCredits: null,
     fetchingMovieCredits: true,
     movieCreditsFetched: false,
     fetchMovieCreditsError: null
@@ -21,7 +21,7 @@ export const MovieCreditsReducer = (state = initialState, action) => {
             console.log('FETCH_MOVIE_CREDITS_PENDING');
             return {
                 ...state,
-                movieCredits: action.payload,
+                movieCredits: null,
                 fetchingMovieCredits: true,
                 movieCreditsFetched: false,
                 fetchMovieCreditsError: null
@@ -32,16 +32,13 @@ export const MovieCreditsReducer = (state = initialState, action) => {
                 ...state,
                 movieCredits: action.payload,
                 fetchingMovieCredits: false,
-                movieCreditsFetched: true,
-                fetchMovieCreditsError: null
+                movieCreditsFetched: true
             };
         case actions.FETCH_MOVIE_CREDITS_REJECTED:
             console.log('FETCH_MOVIE_CREDITS_REJECTED');
             return {
                 ...state,
-                movieCredits: null,
                 fetchingMovieCredits: false,
-                movieCreditsFetched: false,
                 fetchMovieCreditsError: action.payload
             };
         default:

@@ -4,16 +4,23 @@ import { bindActionCreators } from 'redux';
 
 import { fetchMovieDetailsAndCredits } from '../state/actions/authActions';
 import { LoadingIndicator } from '../shared/LoadingIndicator';
+import { MovieDetailPage } from '../components/MovieDetailPage';
 
  class MovieDetails extends Component {
    componentDidMount() {
      this.props.fetchMovieDetailsAndCredits(this.props.match.params.id);
    }
 
-   renderMovieDetails = () => {
-     
+   getDirectors = (movieCredits) => {
+    return movieCredits.crew.filter(c => c.job === 'Director');
    }
+
+   getWriters = (movieCredits) => {
+    return movieCredits.crew.filter(c => c.job === 'Writer');
+   }
+
     render() {
+      let imageUrl, directors, writers, cast;
       const { movieCredits, 
               fetchingMovieCredits, 
               movieCreditsFetched, 
@@ -24,19 +31,27 @@ import { LoadingIndicator } from '../shared/LoadingIndicator';
               fetchMovieDetailsError,
               apiConf
              } = this.props;
+      if(movieDetails) {
+        imageUrl = apiConf.images.base_url + apiConf.images.poster_sizes[4] + movieDetails.backdrop_path;
+      }
+      if (movieCreditsFetched) {
+        directors = this.getDirectors(movieCredits);
+        writers = this.getWriters(movieCredits);
+      }
       
-      const imageUrl = apiConf.images.base_url + apiConf.images.poster_sizes[4] + movieDetails.backdrop_path;
       return  (
         <Fragment>
-        <h1>Movie Details Component</h1>
         {
           <LoadingIndicator busy={fetchingMovieCredits || fetchingMovieDetails} />
         }
         {
-          movieCreditsFetched && fetchingMovieDetails && 
-          <Fragment>
-            <img src={imageUrl} />
-          </Fragment>
+          movieCreditsFetched && 
+          movieDetailsFetched && 
+          <MovieDetailPage 
+          movieDetails={movieDetails} 
+          imageUrl={imageUrl} 
+          directors={directors} 
+          writers={writers}/>
         }
       </Fragment>
       )

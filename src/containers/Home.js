@@ -16,8 +16,6 @@ class Home extends Component {
                 popularMovies, fetchingPopularMovies, popularMoviesFetched, fetchPopularMoviesError,
                 popularTvShows, fetchingPopularTvShows, popularTvShowsFetched, fetchPopularTvShowsError 
                 } = this.props;
-        console.log(`popularMovies: ${JSON.stringify(popularMovies)}`);
-        console.log(`popularTvShows: ${JSON.stringify(popularTvShows)}`);
         return (
             <Fragment>
                 {
@@ -27,7 +25,7 @@ class Home extends Component {
                     popularMoviesFetched && <PopularMoviesList movies={popularMovies} imagesConf={apiConf.images}/>
                 }
                 {
-                    popularTvShowsFetched && <h1>popularTvShowsFetched yo</h1>
+                    popularTvShowsFetched && <h1>popularTvShowsFetched</h1>
                 }
             </Fragment>
         )
