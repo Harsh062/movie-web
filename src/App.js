@@ -12,13 +12,12 @@ import queryString from 'query-string';
 import { Header } from './components/Header';
 import  Dashboard  from './containers/Dashboard';
 import Home from './containers/Home';
-import Auth from './containers/Auth';
 import MovieDetails from './containers/MovieDetails';
 
 import { Footer } from './shared/Footer';
 import { LoadingIndicator } from './shared/LoadingIndicator';
 
-import { fetchGuestSessionId, fetchRequestToken, fetchAPIConfiguration, fetchSessionId } from './state/actions/authActions';
+import { fetchGuestSessionId, fetchRequestToken, fetchAPIConfiguration, fetchSessionId, logout } from './state/actions/authActions';
 import { setSessionId, getSessionId, setUser, getUser } from './services/AuthService';
 
 // COMPONENT
@@ -53,6 +52,7 @@ class App extends Component {
 
     onLogoutHandler = () => {
         window.localStorage.clear();
+        this.props.logout();
         this.props.history.push('/');
     }
 
@@ -141,7 +141,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({ fetchGuestSessionId, fetchRequestToken, fetchAPIConfiguration, fetchSessionId }, dispatch);
+    return bindActionCreators({ fetchGuestSessionId, fetchRequestToken, fetchAPIConfiguration, fetchSessionId, logout }, dispatch);
 };
 
 // CONFIGURE COMPONENT PROP TYPES

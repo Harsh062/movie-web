@@ -36,7 +36,7 @@ export const Header = (props) => {
                 <Nav>
                     <NavItem eventKey={1}>
                         <div onClick={props.onUserClick}>
-                            Welcome {userInfoFetched ? user.username: ''}
+                            Welcome {userInfoFetched ? (user ? user.username: '') : ''}
                         </div>
                     </NavItem>
                     <NavItem eventKey={1}>

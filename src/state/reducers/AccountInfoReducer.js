@@ -40,6 +40,11 @@ export const AccountInfoReducer = (state = initialState, action) => {
                 userInfoFetched: false,
                 userInfoFetchError: action.payload
             };
+        case actions.LOGOUT: 
+            return {
+                ...state,
+                userinfo: null
+            }
         default:
             return state;
     }

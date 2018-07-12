@@ -68,11 +68,9 @@ const fetchUserInfoAndConfigurations = session_id => {
     }
 }
 
-const logout = () => {
-    return {
-        type: actions.LOGOUT
-    }
-}
+const logout = () => ({
+    type: actions.LOGOUT
+})
 
 const fetchSessionId = (req_token) => {
     return dispatch => {
@@ -116,5 +114,6 @@ export {
          fetchUserInfo, 
          fetchAPIConfiguration, 
          fetchPopularMoviesAndTvShows,
-         fetchMovieDetailsAndCredits
+         fetchMovieDetailsAndCredits,
+         logout
         };
