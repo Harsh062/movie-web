@@ -25,20 +25,20 @@ import { setSessionId, getSessionId, setUser, getUser } from './services/AuthSer
 class App extends Component {
     componentWillReceiveProps(nextProps) {
         const request_token = queryString.parse(this.props.location.search).request_token;
-        const sessionId = window.localStorage.getItem('sessionId');
+        const sessionId = getSessionId();
         const isLoggedin = (sessionId !== null);
-        const user = window.localStorage.getItem('user');
+        const user = getUser();
         if (!isLoggedin && request_token && nextProps.sessionId) {
-            window.localStorage.setItem('sessionId', nextProps.sessionId);
+            setSessionId(nextProps.sessionId);
         }
         if (!user && isLoggedin && request_token && nextProps.userinfo) {
-            window.localStorage.setItem('user', JSON.stringify(nextProps.userinfo));
+            setUser(JSON.stringify(nextProps.userinfo));
         }
     }
 
     componentDidMount(){
         const request_token = queryString.parse(this.props.location.search).request_token;
-        const sessionId = window.localStorage.getItem('sessionId');
+        const sessionId = getSessionId();
         const isLoggedin = (sessionId !== null);
         if (request_token && !isLoggedin) {
             this.props.fetchSessionId(request_token);
@@ -61,9 +61,9 @@ class App extends Component {
     }
 
     render() {
-        const sessionId = window.localStorage.getItem('sessionId');
+        const sessionId = getSessionId();
         const request_token = queryString.parse(this.props.location.search).request_token;
-        const user = JSON.parse(window.localStorage.getItem('user'));
+        const user = JSON.parse(getUser());
         const isUserLoggedIn = (sessionId !== null);
         const {
                 fetchingRequestToken, 
