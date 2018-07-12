@@ -11,7 +11,7 @@ ReactDOM.render(
     <Provider store={createAppStore()}>
         <BrowserRouter>
             <Fragment>
-                <App />
+                <Route path="/" component={App} />
             </Fragment>
         </BrowserRouter>
     </Provider>, 

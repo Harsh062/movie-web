@@ -22,7 +22,7 @@ const MovieDetailPage = ({movieDetails, imageUrl, directors, writers}) => {
                 </Col>
                 <Col xs={6} md={6}>
                     <div className="movie-title">{movieDetails.title}</div>
-                    <div className="movie-release-date">Releas Date: {movieDetails.release_date}</div>
+                    <div className="movie-release-date">Release Date: {movieDetails.release_date}</div>
                     <div className="movie-release-date">Director: {getDirectorNames()}</div>
                     <div className="movie-release-date">Writer: {getWriterNames()}</div>
                 </Col>

@@ -6,7 +6,7 @@ import * as actions from '../actions/actionTypes';
 // INITIALIZE STATE
 
 const initialState = {
-    sessionId: 'ession ID',
+    sessionId: null,
     fetchingSessionId: false,
     sessionIdFetched: false,
     fetchSessionIdError: null
@@ -43,6 +43,15 @@ export const SessionReducer = (state = initialState, action) => {
                 fetchingSessionId: false,
                 sessionIdFetched: false,
                 fetchSessionIdError: action.payload
+            };
+        case actions.LOGOUT:
+            console.log('FETCH_SESSION_ID_REJECTED');
+            return {
+                ...state,
+                sessionId: null,
+                fetchingSessionId: false,
+                sessionIdFetched: false,
+                fetchSessionIdError: null
             };
         default:
             return state;

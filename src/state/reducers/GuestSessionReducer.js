@@ -6,7 +6,7 @@ import * as actions from '../actions/actionTypes';
 // INITIALIZE STATE
 
 const initialState = {
-    guestSessionId: 'Default Session ID',
+    guestSessionId: null,
     fetchingGuestSessionId: true,
     guestSessionIdFetched: false,
     fetchGuestSessionIdError: null

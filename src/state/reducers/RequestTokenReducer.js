@@ -6,7 +6,7 @@ import * as actions from '../actions/actionTypes';
 // INITIALIZE STATE
 
 const initialState = {
-    requestToken: 'Yolo',
+    requestToken: null,
     fetchingRequestToken: false,
     requestTokenFetched: false,
     fetchRequestTokenError: null

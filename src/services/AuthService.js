@@ -35,7 +35,7 @@ export const fetchRequestTokenService = () => {
 
 export const fetchSessionIdService = (req_token) => {
     return new Promise((resolve, reject) => {
-        axios.get(`${API_BASE_URL}/configuration?api_key=${API_KEY}`)
+        axios.get(`${API_BASE_URL}/authentication/session/new?api_key=${API_KEY}&request_token=${req_token}`)
         .then(response => {
             console.log(response.data);
             return resolve(response.data);
@@ -124,4 +124,20 @@ export const fetchMovieDetailsService = (movie_id) => {
             return reject(error);
         })
     });
+}
+
+export const setSessionId = session_id => {
+    window.localStorage.setItem('sessionId', session_id);
+}
+
+export const getSessionId = () => {
+    return window.localStorage.getItem('sessionId');
+}
+
+export const setUser = user => {
+    window.localStorage.setItem('user', user);
+}
+
+export const getUser = () => {
+    return window.localStorage.getItem('user');
 }

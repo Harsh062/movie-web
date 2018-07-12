@@ -68,13 +68,19 @@ const fetchUserInfoAndConfigurations = session_id => {
     }
 }
 
+const logout = () => {
+    return {
+        type: actions.LOGOUT
+    }
+}
+
 const fetchSessionId = (req_token) => {
     return dispatch => {
         return dispatch({
             type: actions.FETCH_SESSION_ID,
             payload: fetchSessionIdService(req_token)
         }).then((res) => {
-            dispatch(fetchUserInfoAndConfigurations(res.value.session_id));
+            dispatch(fetchUserInfo(res.value.session_id));
         });
     };
 }
